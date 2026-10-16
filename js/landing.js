@@ -35,14 +35,10 @@ $$('[data-split]').forEach(el=>{
 
 /* ---- día: lista ---- */
 const DAY=[
- ['08:40','Hoy','Abres la app y lo ves todo: quién entra, quién libra y cuánta gente se espera.','f'],
- ['09:02','Fichar','Lucía mete su PIN. Si llega tarde, queda anotado, sin discusiones.','f'],
- ['11:30','Mensajes','Avisas de que hoy cambia la carta. Y ves quién lo ha leído, cosa que en el grupo de WhatsApp no pasa.','f'],
- ['13:10','Cambio de turno','Iván y Sara se cambian el sábado. Tú lo apruebas desde el móvil, de un toque.','p'],
- ['16:00','Ausencias','Andrés pide el 24 y el 25. Ves cuántos días le quedan antes de decir que sí.','f'],
- ['18:45','Reservas','Alguien reserva mesa para 6 desde tu web. Tú sigues atendiendo; el aviso llega a tu móvil.','p'],
- ['23:40','Costes','Cierras sabiendo lo que ha costado hoy el equipo, no un mes después con la nómina.','p'],
- ['Dom 20:00','IA','El resumen de la semana y el borrador del cuadrante del lunes, en un minuto.','p'],
+ ['09:02','Fichar','Lucía mete su PIN y tú lo ves en directo.','f'],
+ ['16:00','Ausencias','Andrés pide dos días; ves cuántos le quedan.','f'],
+ ['18:45','Reservas','Mesa para 6 desde tu web, sin coger el teléfono.','p'],
+ ['23:40','Costes','Cierras sabiendo lo que ha costado el día.','p'],
 ];
 $('#dayL').innerHTML=DAY.map(d=>`<li><time>${d[0]}</time><div><h3>${d[1]}</h3><p>${d[2]}</p></div><span class="prem ${d[3]==='f'?'prem--free':''}">${d[3]==='f'?'Gratis':'Premium'}</span></li>`).join('');
 
@@ -368,57 +364,6 @@ $('#bizTabs').addEventListener('click',e=>{const b=e.target.closest('.tab');if(b
 drawBz(0);
 let bi=0,bAuto=setInterval(()=>{if(!document.hidden&&!RM&&!$('#bz').matches(':hover'))drawBz(bi=(bi+1)%3)},4200);
 $('#bizTabs').addEventListener('click',()=>clearInterval(bAuto));
-
-/* ============ PLANES: la lista entera ============ */
-// true = incluido, false = no, texto = detalle. [nombre, gratis, premium, detalle]
-const T=true,F=false;
-const GRUPOS=[
- ['Equipo y fichajes',[
-  ['Fichar con PIN y ver el día en directo en Hoy',T,T],
-  ['Registro de jornada en Excel y PDF, con acceso para tu gestoría',T,T,'Correcciones y anulaciones quedan guardadas'],
-  ['Horas por persona, estadísticas de cumplimiento y plantilla',T,T],
- ]],
- ['Cuadrante y ausencias',[
-  ['Cuadrante, horarios fijos, cobertura, festivos y disponibilidad',T,T],
-  ['Vacaciones, bajas, refuerzos y mensajes al equipo',T,T],
-  ['Cambios de turno entre compañeros',F,T,'Mismo puesto y respetando el descanso'],
- ]],
- ['Tu negocio',[
-  ['Locales','Hasta 3','Sin límite'],
-  ['Plantillas por tipo de negocio, tus palabras, tu logo y módulos a la carta',T,T],
- ]],
- ['Mi web',[
-  ['Crear tu web y verla en móvil y ordenador',T,T],
-  ['Publicarla con enlace y QR, reservas dentro y visible en Google',F,T],
-  ['Dominio propio',F,'Extra de pago'],
- ]],
- ['Reservas',[
-  ['Reservas online de tus clientes, con agenda y avisos por email',F,'1.000 al mes'],
- ]],
- ['IA y costes',[
-  ['Cuadrante en un minuto y «me falta alguien»',F,'50 usos al mes'],
-  ['Preguntas, resumen del lunes, fichajes sin líos y escribir por ti',F,T],
-  ['Coste de personal previsto y real, por persona y por local',F,T],
- ]],
- ['Redes sociales',[
-  ['Publicar en Facebook e Instagram desde la app, con textos de la IA',F,'Extra de pago'],
- ]],
-];
-const cell=v=>v===T?`<span class="yes">${CHECK}</span>`:v===F?'<span class="no">—</span>':(/^Extra/.test(v)?`<span class="x1">${v}</span>`:v);
-function drawCmp(){
-  const only=$('#onlyDiff').checked;let n=0,tot=0,html='';
-  GRUPOS.forEach(([g,rows])=>{
-    const rs=rows.filter(r=>{tot++;return !only||r[1]!==r[2]});
-    if(!rs.length)return;
-    n+=rs.length;
-    html+=`<div class="cmp__g"><span>${g}</span><b>${rs.length} ${rs.length===1?'función':'funciones'}</b></div>`;
-    html+=rs.map(r=>`<div class="cmp__r ${r[1]===r[2]?'same':''}"><div><span>${r[0]}${r[3]?`<small>${r[3]}</small>`:''}</span></div><div>${cell(r[1])}</div><div>${cell(r[2])}</div></div>`).join('');
-  });
-  $('#cmp').innerHTML=html;
-  $('#cmpCnt').textContent=only?`${n} de ${tot} funciones cambian con Premium`:`${tot} funciones en total`;
-}
-$('#onlyDiff').addEventListener('change',drawCmp);
-drawCmp();
 
 /* ============ FAQ ============ */
 const FAQ=[
