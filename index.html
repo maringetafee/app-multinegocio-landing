@@ -3,63 +3,93 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>App Multinegocio: turnos, fichajes, reservas y tu propia web</title>
+<title>Durísima: tu equipo, tus reservas, tu web y tus redes</title>
 <meta name="description" content="Tu equipo ficha con un PIN, tú ves el día desde el móvil, la IA te monta el cuadrante y hasta te hacemos la web del negocio. Para bares, peluquerías, clínicas y tiendas. 14 días de Premium sin tarjeta.">
-<meta name="theme-color" content="#692580">
+<meta name="theme-color" content="#111111">
 <meta name="color-scheme" content="light">
 <meta name="format-detection" content="telephone=no">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="es_ES">
-<meta property="og:title" content="App Multinegocio: turnos, fichajes, reservas y tu propia web">
-<meta property="og:description" content="Fichajes con PIN, cuadrante con IA, reservas online y tu web, en una sola app. Para bares, peluquerías, clínicas y tiendas.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23DB488E'/%3E%3Cpath d='M8 10h16M8 16h10M8 22h16' stroke='%23240B2E' stroke-width='3.4' stroke-linecap='round' fill='none'/%3E%3C/svg%3E">
-<link rel="preload" href="fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="fonts/instrument-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+<meta property="og:title" content="Durísima: tu equipo, tus reservas, tu web y tus redes. Todo en uno.">
+<meta property="og:description" content="Fichajes con PIN, cuadrante con IA, reservas online, tu web y tus redes, en una sola app. Para bares, peluquerías, clínicas y tiendas.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%23111'/%3E%3Cpath d='M10 7h6.5a9 9 0 0 1 0 18H10z M13.4 10.4v11.2h3a5.6 5.6 0 0 0 0-11.2z' fill='%23fff' fill-rule='evenodd'/%3E%3C/svg%3E">
+<link rel="preload" href="fonts/anton-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="css/landing.css">
+<script src="vendor/gsap-3.13.0/gsap.min.js" defer></script>
+<script src="vendor/gsap-3.13.0/ScrollTrigger.min.js" defer></script>
 <script src="js/landing.js" defer></script>
 </head>
 <body>
 <script>document.documentElement.classList.add('js')</script>
 
-<header class="nav">
-  <a class="brand" href="#top" aria-label="App Multinegocio, inicio">
-    <span class="brand__mark"><svg viewBox="0 0 24 24" fill="none" stroke="#240B2E" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h10M4 18h16"/></svg></span>
-    App Multinegocio
+<header class="nav" id="nav">
+  <a class="brand" href="#top" aria-label="Durísima, inicio">
+    <span class="brand__mark" aria-hidden="true">D</span>Durísima
   </a>
   <nav class="nav__links" aria-label="Principal">
     <a href="#fichaje">Fichar</a><a href="#cuadrante">Cuadrante</a><a href="#reservas">Reservas</a><a href="#web">Tu web</a><a href="#costes">Costes</a><a href="#planes">Qué incluye</a>
   </nav>
-  <a class="btn btn--sm btn--lime" href="#probar" data-wa>Probar gratis</a>
+  <a class="btn btn--sm" href="#probar" data-wa>Probar gratis</a>
 </header>
 
 <main id="top">
 <!-- ============ HERO ============ -->
-<section class="hero">
-  <div class="wrap hero__top">
-    <h1 class="display" data-split>Todo tu negocio<span class="l2"><em>en una app.</em></span></h1>
-  </div>
+<section class="hero" id="hero">
+  <video class="hero__amb" id="ambV" muted loop playsinline preload="none" disablepictureinpicture aria-hidden="true" tabindex="-1" poster="media/anuncio-ambiente.webp"></video>
+  <div class="rays" aria-hidden="true"></div>
   <div class="wrap hero__grid">
-    <div>
+    <div class="hero__txt">
+      <h1 class="display" data-split>Todo tu negocio <em>en una app.</em></h1>
       <p class="folio">Bares, peluquerías, clínicas, tiendas y todo lo que tenga equipo</p>
-      <p class="lead">Fichajes, cuadrante, reservas e incluso tu web. Tu equipo ficha con un PIN, la IA te prepara la semana y tú dejas de perseguir a nadie por WhatsApp.</p>
+      <p class="lead">Fichajes, cuadrante, reservas, tu web y tus redes. Tu equipo ficha con un PIN, la IA te prepara la semana y tú dejas de perseguir a nadie por WhatsApp.</p>
       <div class="btn-row">
-        <a class="btn" href="#probar" data-wa>Probar 14 días gratis</a>
-        <a class="btn btn--ghost" href="#planes">Ver qué incluye ↓</a>
+        <a class="btn btn--w" href="#probar" data-wa>Probar 14 días gratis</a>
+        <button class="btn btn--ghost" type="button" id="vidOpen">▶ Ver el anuncio entero</button>
       </div>
       <p class="fine"><b>14 días de Premium</b> sin tarjeta · <b>3 locales</b> gratis para siempre</p>
     </div>
 
-    <div class="stageP">
-      <div class="slab" aria-hidden="true"></div>
-      <div class="sticker sticker--a" aria-hidden="true"><span>Sin<b>cartón</b>ni reloj</span></div>
-      <div class="sticker sticker--b" aria-hidden="true"><span>PIN de<br>4 cifras</span></div>
-      <div class="pills" aria-hidden="true">
+    <div class="stage">
+      <div class="sticker" aria-hidden="true"><span>Prueba<b>14 días</b>gratis</span></div>
+      <div class="story idle" id="story" role="group" aria-label="Anuncio de Durísima, 40 segundos, sin sonido">
+        <video class="story__v" id="storyV" muted loop playsinline preload="none"></video>
+        <img class="story__poster" src="media/anuncio-poster.webp" alt="" width="720" height="1280" fetchpriority="high" decoding="async">
+        <div class="story__top" id="storyTop"></div>
+        <div class="story__cap" id="storyCap" aria-live="off"><i></i><span id="capT">Basta de WhatsApp y Excel</span></div>
+        <button class="story__big" id="storyBig" type="button" aria-label="Reproducir el anuncio"><span><svg viewBox="0 0 24 24" fill="#fff"><path d="M7 4.5v15l13-7.5z"/></svg></span></button>
+        <button class="story__pp" id="storyPP" type="button" aria-label="Pausar el vídeo">
+          <svg class="i-pause" viewBox="0 0 24 24" fill="currentColor"><path d="M6 4h4v16H6zM14 4h4v16h-4z"/></svg>
+          <svg class="i-play" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l13-7.5z"/></svg>
+        </button>
+      </div>
+      <p class="sr-only">El anuncio recorre: basta de WhatsApp y Excel, tu equipo en directo, fichar con PIN, el cuadrante con IA, vacaciones y ausencias, para cualquier negocio, reservas y citas, tu web con dominio propio, tus redes en automático y la oferta de lanzamiento.</p>
+      <div class="pills" id="pills" aria-hidden="true">
         <span class="pill pill--a" style="--k:0"><i>✓</i>Lucía fichó a las 09:02</span>
         <span class="pill pill--b" style="--k:1"><i>6</i>Reserva · hoy 21:00</span>
         <span class="pill pill--c" style="--k:2"><i>✦</i>Cuadrante listo · 160 h</span>
         <span class="pill pill--d" style="--k:3"><i>@</i>Tu web, ya en internet</span>
       </div>
-      <article class="pcard" aria-label="Tarjeta de fichar interactiva">
+    </div>
+  </div>
+</section>
+
+<!-- ============ LO QUE SE TIRA ============ -->
+<section class="old" id="old">
+  <div class="old__stage" id="oldStage">
+    <div class="bub bub--1" aria-hidden="true"><small>Irene</small>No me sale el horario <em>22:08</em></div>
+    <div class="bub bub--2" aria-hidden="true"><small>Javi</small>¿Me cambias el turno del sábado? <em>18:31</em></div>
+    <div class="bub bub--3" aria-hidden="true"><small>Pablo</small>¿Quién abre el domingo? <em>19:14</em></div>
+    <div class="bub bub--4" aria-hidden="true"><small>Nerea</small>Mañana no puedo ir 😩 <em>02:21</em></div>
+    <p class="basta" id="basta">¡Basta!</p>
+  </div>
+  <div class="old__body">
+    <div class="wrap old__grid">
+      <div>
+        <p class="old__l">Cosas que ya puedes tirar</p>
+        <p class="old__t" id="oldT"><s style="--i:0">la libreta de turnos</s> <s style="--i:1">el Excel que solo entiendes tú</s> <s style="--i:2">el grupo de WhatsApp del cuadrante</s> <s style="--i:3">la hoja de firmas</s> <s style="--i:4">el «¿me cambias el viernes?» a las 11 de la noche</s> <s style="--i:5">la agenda de papel de las reservas</s> <span class="go">→ todo en una app</span></p>
+      </div>
+      <article class="pcard rv" aria-label="Tarjeta de fichar interactiva">
         <header class="pcard__h"><b>Tarjeta de fichar</b><span>Café Central<br>semana 42</span></header>
         <div class="ptab" id="ptab"></div>
         <div class="ptot"><span>Semana</span><b id="ptot">32,2 h</b><small>de 40 h</small></div>
@@ -70,16 +100,8 @@
   </div>
 </section>
 
-<!-- ============ LO QUE SE TIRA ============ -->
-<section class="old">
-  <div class="wrap">
-    <p class="old__l">Cosas que ya puedes tirar</p>
-    <p class="old__t" id="oldT"><s style="--i:0">la libreta de turnos</s> <s style="--i:1">el Excel que solo entiendes tú</s> <s style="--i:2">el grupo de WhatsApp del cuadrante</s> <s style="--i:3">la hoja de firmas</s> <s style="--i:4">el «¿me cambias el viernes?» a las 11 de la noche</s> <s style="--i:5">la agenda de papel de las reservas</s> <span class="go">→ todo en una app</span></p>
-  </div>
-</section>
-
 <!-- ============ UN DÍA ============ -->
-<section class="sec" id="dia">
+<section class="sec" id="dia" style="--lab:var(--verde-d)">
   <div class="wrap">
     <div class="head">
       <div class="kick"><b>00</b>Un día en tu local</div>
@@ -91,7 +113,7 @@
 </section>
 
 <!-- ============ 01 FICHAJE ============ -->
-<section class="sec sec--kraft" id="fichaje">
+<section class="sec sec--c sec--azul" id="fichaje">
   <div class="wrap">
     <div class="split split--wide">
       <div class="split__txt">
@@ -151,7 +173,7 @@
 </section>
 
 <!-- ============ 03 RESERVAS ============ -->
-<section class="sec sec--kraft" id="reservas">
+<section class="sec sec--c sec--naranja" id="reservas">
   <div class="wrap">
     <div class="head">
       <div class="kick"><b>03</b>Reservas <span class="prem">Premium</span></div>
@@ -199,7 +221,7 @@
 </section>
 
 <!-- ============ 04 MI WEB ============ -->
-<section class="sec sec--tomato" id="web">
+<section class="sec sec--c sec--violeta" id="web">
   <div class="wrap">
     <div class="split split--rev">
       <div class="webdemo rv" id="wd">
@@ -209,16 +231,16 @@
           <div class="site" id="site" data-s="bar"></div>
         </div>
         <div class="wd__act">
-          <button class="btn btn--sm" id="wdPub" type="button">Publicar mi web · Premium</button>
+          <button class="btn btn--sm" id="wdPub" type="button" style="--sh:var(--violeta)">Publicar mi web · Premium</button>
           <div class="qr" id="qr" aria-live="polite"></div>
         </div>
       </div>
       <div class="split__txt">
         <div class="kick"><b>04</b>Mi web <span class="prem prem--free">Crear: gratis</span></div>
         <h2 class="h2" data-split>Tu web, <em>hecha en un rato.</em></h2>
-        <p class="lead rv" style="color:var(--ink)">Elige un estilo (hay 8, y uno es para tu tipo de negocio), añade tu carta o tus servicios, fotos, horario y mapa, y la tendrás lista en unos minutos, con tus reservas dentro. Se edita desde el navegador del ordenador.</p>
+        <p class="lead rv">Elige un estilo (hay 8, y uno es para tu tipo de negocio), añade tu carta o tus servicios, fotos, horario y mapa, y la tendrás lista en unos minutos, con tus reservas dentro. Se edita desde el navegador del ordenador.</p>
         <ul class="ticks rv"><li>Tres pasos: estilo, textos y fotos, y publicar.</li><li>Enlace y código QR listos para la puerta del local o tu Instagram.</li><li>Tus reservas, dentro de la web.</li></ul>
-        <p class="hint rv" style="color:var(--ink)">↳ Cambia de estilo y pulsa «Publicar». Ejemplo con datos inventados.</p>
+        <p class="hint rv">↳ Cambia de estilo y pulsa «Publicar». Ejemplo con datos inventados.</p>
       </div>
     </div>
     <div class="webcols rv">
@@ -235,7 +257,7 @@
 </section>
 
 <!-- ============ 05 REGISTRO Y GESTORÍA ============ -->
-<section class="sec" id="registro">
+<section class="sec" id="registro" style="--lab:var(--azul)">
   <div class="wrap">
     <div class="split split--rev">
       <div class="demo rv" id="d5">
@@ -262,7 +284,7 @@
 </section>
 
 <!-- ============ 06 COSTES ============ -->
-<section class="sec sec--kraft" id="costes">
+<section class="sec sec--c sec--negro" id="costes">
   <div class="wrap">
     <div class="split split--rev">
       <div class="cost rv" id="d4">
@@ -289,7 +311,7 @@
 </section>
 
 <!-- ============ 07 VARIOS NEGOCIOS ============ -->
-<section class="sec" id="negocios">
+<section class="sec" id="negocios" style="--lab:var(--rosa)">
   <div class="wrap">
     <div class="biz">
       <div>
@@ -318,8 +340,11 @@
   </div>
 </section>
 
+<!-- ============ MURO DE PALABRAS ============ -->
+<section class="wall" id="wall" aria-hidden="true"></section>
+
 <!-- ============ PLANES ============ -->
-<section class="sec sec--kraft" id="planes">
+<section class="sec" id="planes" style="--lab:var(--acento)">
   <div class="wrap">
     <div class="head">
       <div class="kick"><b>08</b>Qué incluye cada plan</div>
@@ -350,13 +375,15 @@
 </section>
 
 <!-- ============ CTA ============ -->
-<section class="cta">
+<section class="cta" id="cta">
   <div class="wrap">
+    <div class="cta__logo" id="ctaLogo" aria-hidden="true">D</div>
     <h2 class="display" data-split>Cierra la libreta. <em>Abre la app.</em></h2>
-    <p class="lead rv">Cuéntanos qué negocio tienes y te damos acceso a Premium durante 14 días. Sin tarjeta, por WhatsApp.</p>
+    <p class="lead rv">Tu equipo, tus reservas, tu web y tus redes. Todo en uno. En App Store y Google Play muy pronto; mientras, pruébala 14 días gratis: te damos acceso por WhatsApp.</p>
+    <div class="soon rv"><span>Muy pronto</span><span>iOS y Android</span></div>
     <div class="btn-row rv">
-      <a class="btn btn--lime" href="#" data-wa>Escríbenos por WhatsApp</a>
-      <a class="btn btn--ghost" href="mailto:makemyweb.info@gmail.com?subject=Quiero%20probar%20App%20Multinegocio">Prefiero email</a>
+      <a class="btn" href="#" data-wa>Escríbenos por WhatsApp</a>
+      <a class="btn btn--ghost" href="mailto:makemyweb.info@gmail.com?subject=Quiero%20probar%20Dur%C3%ADsima">Prefiero email</a>
     </div>
   </div>
 </section>
@@ -364,13 +391,17 @@
 
 <footer class="foot">
   <div class="wrap">
-    <span class="brand">App Multinegocio</span>
+    <span class="brand"><span class="brand__mark" aria-hidden="true">D</span>Durísima</span>
     <span>Una app de <a href="https://makemyweb.es">MakeMyWeb</a> · Getafe (Madrid)</span>
     <span><a href="mailto:makemyweb.info@gmail.com">makemyweb.info@gmail.com</a> · <a href="https://wa.me/34689872320">689 872 320</a></span>
   </div>
 </footer>
+
+<dialog class="vid" id="vidDlg" aria-label="Anuncio de Durísima">
+  <button class="x" type="button" id="vidX" aria-label="Cerrar">✕</button>
+  <video id="vidFull" controls playsinline preload="none"></video>
+</dialog>
+<div class="fx" id="fx" aria-hidden="true"></div>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
-
-
 </body>
 </html>
