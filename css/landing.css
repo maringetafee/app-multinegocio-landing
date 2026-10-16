@@ -579,3 +579,4 @@ a,button,summary,.switch,.chip,.opt,.wchip,.tab,input[type=range]{touch-action:m
 .seg{display:block;padding:0}
 .hero .btn--w{--sh:var(--naranja)}
 .seg::before,.seg::after{box-shadow:0 0 0 1px rgba(17,17,17,.3)}
+@media(max-width:520px){.pill--b,.pill--c{display:none}}
