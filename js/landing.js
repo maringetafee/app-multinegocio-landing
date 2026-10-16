@@ -556,11 +556,10 @@ if(RM||!window.gsap||!window.ScrollTrigger){
   // burbujas de WhatsApp → ¡BASTA!
   {
     const stage=$('#oldStage'),bubs=$$('.bub',stage);
-    const tl=gsap.timeline({scrollTrigger:{trigger:stage,start:'top 70%',once:true}});
-    bubs.forEach((b,i)=>tl.from(b,{x:(i%2?1:-1)*420,y:90,rotation:(i%2?1:-1)*35,autoAlpha:0,scale:.6,duration:.55,ease:'back.out(1.6)'},i*.28));
-    tl.fromTo('#basta',{autoAlpha:1,scale:4,filter:'blur(24px)'},{scale:1,filter:'blur(0px)',duration:.28,ease:'expo.out'},'+=.3')
-      .fromTo(stage,{backgroundColor:'#ffffff'},{backgroundColor:'#111111',duration:.3,ease:'none'},'<')
-      .to(stage,{x:'+=14',duration:.05,repeat:7,yoyo:true,ease:'none'},'<')
+    const tl=gsap.timeline({scrollTrigger:{trigger:stage,start:'top 85%',once:true}});
+    bubs.forEach((b,i)=>tl.from(b,{x:(i%2?1:-1)*420,y:90,rotation:(i%2?1:-1)*35,autoAlpha:0,scale:.6,duration:.4,ease:'back.out(1.6)'},i*.14));
+    tl.fromTo('#basta',{autoAlpha:0,scale:2.2,rotation:-12},{autoAlpha:1,scale:1,rotation:-3,duration:.3,ease:'back.out(2.2)'},'+=.1')
+      .to(stage,{x:'+=14',duration:.05,repeat:7,yoyo:true,ease:'none'},'<+.15')
       .add(()=>burst($('#basta'),30,200),'<')
       .to(bubs,{x:i=>Math.cos(i*2.1+.6)*1300,y:i=>Math.sin(i*2.1+.6)*1300,rotation:i=>(i%2?1:-1)*140,scale:.6,duration:.3,ease:'power3.in',stagger:.03},'<+.1')
       .to(stage,{x:0,duration:.01},'>');
